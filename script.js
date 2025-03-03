@@ -1,26 +1,3 @@
-const currentUser = checkAuth();
-let userData = JSON.parse(localStorage.getItem('users'))[currentUser].userData;
-
-// Replace all localStorage operations with user-specific operations
-function updateLocalStorage() {
-    const users = JSON.parse(localStorage.getItem('users'));
-    users[currentUser].userData = {
-        ...userData,
-        tasks: tasks,
-        level: userLevel,
-        xp: userXP,
-        streak: streakCount,
-        lastCompletedDate: lastCompletedDate
-    };
-    localStorage.setItem('users', JSON.stringify(users));
-}
-
-document.querySelector('header').innerHTML += `
-    <div class="user-info">
-        <span>Welcome, ${currentUser}!</span>
-        <button onclick="logout()" class="logout-btn">Logout</button>
-    </div>
-`;
 // Initialize data from localStorage or set defaults
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 let lastCompletedDate = localStorage.getItem('lastCompletedDate');

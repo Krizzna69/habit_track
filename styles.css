@@ -1,0 +1,459 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Arial', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: #1E1E1E;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 2.2em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.streak-container {
+    font-size: 1.2em;
+    color: #FF4D4D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.streak-container i {
+    animation: flame 1.5s ease-in-out infinite;
+}
+
+@keyframes flame {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.task-input-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #2C2C2C;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+#taskInput:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+}
+
+#addButton {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#addButton:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.tasks-container {
+    background-color: #1E1E1E;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 25px;
+    border: 1px solid #333;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #2C2C2C;
+    border-radius: 8px;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-checkbox {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid #4CAF50;
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.3s ease;
+    background-color: #2C2C2C;
+}
+
+.task-checkbox:checked {
+    background-color: #4CAF50;
+}
+
+.task-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-text {
+    flex: 1;
+    color: #E0E0E0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.task-delete {
+    color: #FF4D4D;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.task-delete:hover {
+    background-color: rgba(255, 77, 77, 0.1);
+    transform: scale(1.1);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.stats-container {
+    background-color: #1E1E1E;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+}
+
+h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.stats-container p {
+    margin: 12px 0;
+    color: #B0B0B0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.stats-container span {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+/* Add these styles in the head of your HTML */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+/* ... (Previous CSS remains the same until header) ... */
+
+.user-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.level-container {
+    font-size: 1.4em;
+    color: #FFD700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.level-container i {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.xp-container {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.xp-bar {
+    height: 20px;
+    background-color: #2C2C2C;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #333;
+    margin-bottom: 5px;
+}
+
+#xp-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+#xp-text {
+    color: #B0B0B0;
+    font-size: 0.9em;
+}
+
+#xpInput {
+    width: 100px;
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #2C2C2C;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.task-item .xp-value {
+    background-color: #4CAF50;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    min-width: 60px;
+    text-align: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #1E1E1E;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    animation: modalAppear 0.3s ease;
+    border: 2px solid #4CAF50;
+    max-width: 400px;
+    width: 90%;
+}
+
+@keyframes modalAppear {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+/* Add these new styles to your existing styles.css file */
+
+.login-container {
+    background-color: #1E1E1E;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.login-form input {
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #2C2C2C;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+}
+
+.login-form button {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.login-form .register-btn {
+    background-color: #2C2C2C;
+}
+
+.login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+#error-message {
+    color: #FF4D4D;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.logout-btn {
+    padding: 8px 15px;
+    background-color: #FF4D4D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.logout-btn:hover {
+    background-color: #ff3333;
+}
+/* ... (Rest of the previous CSS remains the same) ... */
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .task-input-container {
+        flex-direction: column;
+    }
+
+    #addButton {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
